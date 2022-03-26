@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Admin\User\RoleController;
+use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -417,6 +418,10 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('/edit/{setting}', [SettingController::class, 'edit'])->name('admin.setting.edit');
         Route::put('/update/{setting}', [SettingController::class, 'update'])->name('admin.setting.update');
     });
+});
+
+Route::namespace("Auth")->group(function(){
+    Route::get("login-register", [LoginRegisterController::class, 'loginRegisterForm'])->name("auth.costomer.login-register-form");
 });
 
 Route::get('/', function(){
